@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--16 dp paddings from all side, constraintLayout-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="16dp">
+
+    <!--  Top left text. centered relative to top right's height -->
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:textSize="20sp"
+        android:textColor="@color/purple_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/changeButton"
+        app:layout_constraintBottom_toBottomOf="@id/changeButton" />
+
+    <!--edit text with no text suggestions(underscore)-->
+
+    <EditText
+        android:id="@+id/editUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:hint="User Name"
+        android:inputType="text|textNoSuggestions"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/changeButton" />
+
+    <!--Top right button -->
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:ellipsize="none"
+        android:text="@string/change_user"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="userName,changeButton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <ImageView
+        android:id="@+id/album"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/strangers_cover_art"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrierTop" />
+
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/song_title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album" />
+
+    <!-- Only shows one line and add dots at the end-->
+    <TextView
+        android:id="@+id/albumDscr"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/song_dscr"
+        android:textSize="15sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songTitle" />
+    <!-- a random number of plays with increment of 1 upon clicks  -->
+    <TextView
+        android:id="@+id/playTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text= "@string/play_time"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumDscr" />
+    <!--divide music and play buttons-->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="playTime"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="62dp" />
+    <!--change relative to play button； extract dim Y-->
+    <!-- constraint layout chain-->
+
+    <!--the following prev play next buttons are connected with a constraint layout
+    chain with prev and next button Y set to the center of play button.
+    refactored dimensions into dimens-->
+    <ImageView
+        android:id="@+id/prevBtn"
+        android:layout_width= "@dimen/prevnextBtnSize"
+        android:layout_height="@dimen/prevnextBtnSize"
+        android:src="@drawable/ic_previous"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playBtn"
+        app:layout_constraintTop_toTopOf="@id/playBtn"
+        app:layout_constraintBottom_toBottomOf="@id/playBtn" />
+
+    <ImageView
+        android:id="@+id/playBtn"
+        android:layout_width="@dimen/playBtnSize"
+        android:layout_height="@dimen/playBtnSize"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintStart_toEndOf="@id/prevBtn"
+        app:layout_constraintEnd_toStartOf="@id/nextBtn"
+        app:layout_constraintTop_toTopOf="@id/barrierBottom" />
+
+    <ImageView
+        android:id="@+id/nextBtn"
+        android:layout_width="@dimen/prevnextBtnSize"
+        android:layout_height="@dimen/prevnextBtnSize"
+        android:src="@drawable/ic_next"
+        app:layout_constraintStart_toEndOf="@id/playBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playBtn"
+        app:layout_constraintBottom_toBottomOf="@id/playBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
