@@ -11,7 +11,6 @@ import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
-
     private var randomNumber = Random.nextInt(1000, 10000)
     private lateinit var uEnteredName: TextView
     private  lateinit var uEditName: EditText
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         var editUName = false
 
         //looks super redundant unsure how to shrink it
-
         //write a seperate function. If need a block of comments, break it up.
         uChangeBtn.setOnClickListener{
             if (uEnteredName.text.toString().equals("")){
