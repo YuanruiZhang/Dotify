@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".PlayerActivity"
     android:padding="16dp">
 
     <!--  Top left text. centered relative to top right's height -->
@@ -55,10 +55,11 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="62dp" />
 
+    <!-- hard coded the song cover size instead of fully expand in case un-uniformed image    -->
     <ImageView
         android:id="@+id/album"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/songCoverSize"
+        android:layout_height="@dimen/songCoverSize"
         android:layout_marginTop="20dp"
         android:src="@drawable/strangers_cover_art"
         app:layout_constraintDimensionRatio="1:1"
@@ -77,13 +78,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/album" />
 
-    <!-- Only shows one line and add dots at the end-->
+    <!-- Only shows one line and add dots at the end. Center text with aligment.
+    Note: 0dp == full span. wrap content == size of its content-->
     <TextView
         android:id="@+id/albumDscr"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/song_dscr"
+        android:textAlignment="center"
         android:textSize="15sp"
         android:maxLines="1"
         android:ellipsize="end"

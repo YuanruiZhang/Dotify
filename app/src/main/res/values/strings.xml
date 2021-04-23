@@ -4,8 +4,6 @@
     <string name="change_user">Change User</string>
     <string name="apply_user">APPLY</string>
     <string name="song_title">Strangers</string>
-    <string name="song_dscr">The song shows why it is strange that some people legit never watched Steins; Gate</string>
+    <string name="song_dscr">The song shows why it is strange that some people legit never watched Steins; Gate asdasdasdasdad</string>
     <string name="play_time">1234 plays</string>
-    <string name="prevnextBtnSize">50dp</string>
-    <string name="playBtnSize">80dp</string>
 </resources>

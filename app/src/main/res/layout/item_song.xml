@@ -14,26 +14,36 @@
     <!--define scalable image-text pairs -->
     <ImageView
         android:id="@+id/ivSongPic"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="78dp"
+        android:layout_height="74dp"
         tools:srcCompat="@tools:sample/avatars" />
+    <!-- A vertical linear layout within horizontal linear layout-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-    <TextView
-        android:id="@+id/tvSongTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginStart="12dp"
-        android:text="Song Title"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvSongTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_gravity="top"
+            android:layout_marginStart="12dp"
+            android:text="Song Title"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tvSongArtist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="12dp"
-        android:text="Artist Name"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/tvSongArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="12dp"
+            android:text="Artist Name"
+            android:textSize="20dp" />
+    </LinearLayout>
 
 </LinearLayout>

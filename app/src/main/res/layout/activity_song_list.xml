@@ -13,19 +13,48 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vBottomBox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_song"
         />
 
-    <Button
-        android:id="@+id/btnShuffle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shuffle List"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vBottomBox"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:elevation='5dp'>
+
+        <!--0dp width to maximize text's length within constraint-->
+        <TextView
+            android:id="@+id/songAuthorDscr"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:text="Song - Author"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnShuffle"
+            app:layout_constraintEnd_toStartOf="@id/btnShuffle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnShuffle"
+            app:layout_constraintVertical_bias="0.472" />
+
+        <Button
+            android:id="@+id/btnShuffle"
+            android:layout_width="138dp"
+            android:layout_height="56dp"
+            android:text="Shuffle"
+            android:backgroundTint="@color/purple_theme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
