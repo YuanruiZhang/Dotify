@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Dotify</string>
-    <string name="user_name">Baby Yoda</string>
+    <string name="user_name">deamon slaying boi</string>
     <string name="change_user">Change User</string>
     <string name="apply_user">APPLY</string>
     <string name="song_title">Strangers</string>
     <string name="song_dscr">The song shows why it is strange that some people legit never watched Steins; Gate asdasdasdasdad</string>
     <string name="play_time">1234 plays</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="setting_profile">Profile Fragment</string>
+    <string name="user_email">wussup@deamon.com</string>
+    <string name="user_dscr">I first cut the deamon, I then cut you. Nah jk</string>
 </resources>

@@ -9,6 +9,7 @@ import android.widget.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ericchee.songdataprovider.Song
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random
 
 private const val SONG_IMG_ID = "song_image_ID"
@@ -36,6 +37,19 @@ fun navigateToSongPlayerActivity(context: Context, singleSong: Song) = with(cont
 }
 
 class PlayerActivity : AppCompatActivity() {
+
+    companion object {
+        val PLAY_COUNT = "playCount"
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // save the user's current state
+        outState?.run {
+            putInt(PLAY_COUNT,randomNumber)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
     private var randomNumber = Random.nextInt(1000, 10000)
     private lateinit var uEnteredName: TextView
     private  lateinit var uEditName: EditText
@@ -47,10 +61,21 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var songImg: ImageView
     private lateinit var songTitle: TextView
     private lateinit var songArtist: TextView
+    private lateinit var fabSettingBtn: FloatingActionButton
     //default false to hide change user name textbox
     private var editUName = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) // Always call the superclass first
+        // check whether we're recreating a previously destryoed instance
+        if (savedInstanceState != null) {
+            with (savedInstanceState) {
+                // restore value of members from saved state
+                randomNumber = getInt(PLAY_COUNT)
+            }
+        }
+        //else { initialize some stuff}
+
         setContentView(R.layout.activity_main)
 
         uEnteredName = findViewById(R.id.userName)
@@ -63,6 +88,7 @@ class PlayerActivity : AppCompatActivity() {
         playBtn = findViewById(R.id.playBtn)
         prevBtn = findViewById(R.id.prevBtn)
         nextBtn = findViewById(R.id.nextBtn)
+        fabSettingBtn = findViewById(R.id.fabSetting)
 
         val songImgPassed: Int? = intent.extras?.getInt(SONG_IMG_ID)
         val songTitlePassed: String? = intent.extras?.getString(SONG_TITLE)
@@ -111,6 +137,13 @@ class PlayerActivity : AppCompatActivity() {
         nextBtn.setOnClickListener {
             nextClicked()
         }
+
+        //go to fragment acitivties
+        fabSettingBtn.setOnClickListener {
+            if (songPassed != null) {
+                lunchSettingActivity(this@PlayerActivity,songPassed,randomNumber)
+            }
+        }
     }
 
     private  fun onChangeButtonClick(){
@@ -144,4 +177,6 @@ class PlayerActivity : AppCompatActivity() {
     private fun nextClicked() {
         Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
     }
+
+
 }

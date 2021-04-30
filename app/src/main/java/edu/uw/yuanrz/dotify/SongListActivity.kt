@@ -11,6 +11,15 @@ import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.yuanrz.dotify.databinding.ActivitySongListBinding
 
 class SongListActivity : AppCompatActivity() {
+    val SAVED_SONG ="savedSong"
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // save the user's current state
+        outState?.run {
+            putParcelable(SAVED_SONG,singleSong)
+        }
+        super.onSaveInstanceState(outState)
+    }
     private lateinit var singleSong: Song
     private lateinit var binding:ActivitySongListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +33,22 @@ class SongListActivity : AppCompatActivity() {
             val adapter = SongListAdapter(songs)
             rvSong.adapter = adapter
 
+            // check whether we're recreating a previously destroyed instance
+            if (savedInstanceState != null) {
+                with (savedInstanceState) {
+                    // restore value of members from saved state
+                    var savedSong = getParcelable<Song>(SAVED_SONG)
+                    if (savedSong != null) {
+                        songAuthorDscr.text = ("${savedSong.title} - ${savedSong.artist}")
+                        vBottomBox.visibility = View.VISIBLE
+                        this@SongListActivity.singleSong = savedSong
+                    }
+                }
+            }
+
             //when click on a song, set song title and description pair to the bottom rectangle
             adapter.onSongClickListener = { position, singleSong ->
-                songAuthorDscr.text = ("${singleSong.title} - ${singleSong.artist}")
+                songAuthorDscr.text =  ("${singleSong.title} - ${singleSong.artist}")
                 vBottomBox.visibility = View.VISIBLE
                 this@SongListActivity.singleSong = singleSong
             }

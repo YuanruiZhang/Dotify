@@ -55,6 +55,15 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="62dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_baseline_settings_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!-- hard coded the song cover size instead of fully expand in case un-uniformed image    -->
     <ImageView
         android:id="@+id/album"
@@ -147,4 +156,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/playBtn"
         app:layout_constraintBottom_toBottomOf="@id/playBtn" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
