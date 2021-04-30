@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import android.widget.TextView
@@ -51,9 +53,9 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private var randomNumber = Random.nextInt(1000, 10000)
-    private lateinit var uEnteredName: TextView
-    private  lateinit var uEditName: EditText
-    private lateinit var uChangeBtn: Button
+//    private lateinit var uEnteredName: TextView
+//    private  lateinit var uEditName: EditText
+//    private lateinit var uChangeBtn: Button
     private lateinit var playTime: TextView
     private lateinit var playBtn: ImageView
     private lateinit var prevBtn: ImageView
@@ -62,6 +64,7 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var songTitle: TextView
     private lateinit var songArtist: TextView
     private lateinit var fabSettingBtn: FloatingActionButton
+    private lateinit var songPassed: Song
     //default false to hide change user name textbox
     private var editUName = false
 
@@ -78,9 +81,9 @@ class PlayerActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        uEnteredName = findViewById(R.id.userName)
-        uEditName = findViewById(R.id.editUserName)
-        uChangeBtn = findViewById(R.id.changeButton)
+        //uEnteredName = findViewById(R.id.userName)
+        //uEditName = findViewById(R.id.editUserName)
+        //uChangeBtn = findViewById(R.id.changeButton)
         songImg = findViewById(R.id.album)
         songTitle = findViewById(R.id.songTitle)
         songArtist = findViewById(R.id.albumDscr)
@@ -93,7 +96,11 @@ class PlayerActivity : AppCompatActivity() {
         val songImgPassed: Int? = intent.extras?.getInt(SONG_IMG_ID)
         val songTitlePassed: String? = intent.extras?.getString(SONG_TITLE)
         //example of how to extract from parcelable extra
-        val songPassed: Song? = intent.getParcelableExtra(SONG_OBJ)
+        val maybeSong: Song? = intent.getParcelableExtra(SONG_OBJ)
+        if (maybeSong != null){
+            songPassed = maybeSong
+        }
+
         val songArtistPassed: String? = intent.extras?.getString(SONG_ARTIST)
 
         if (songImgPassed != null && songTitlePassed != null && songArtistPassed != null && songPassed != null) {
@@ -106,9 +113,9 @@ class PlayerActivity : AppCompatActivity() {
 
         //looks super redundant unsure how to shrink it
         //write a seperate function. If need a block of comments, break it up.
-        uChangeBtn.setOnClickListener{
-            onChangeButtonClick()
-        }
+//        uChangeBtn.setOnClickListener{
+//            onChangeButtonClick()
+//        }
 
         var songChangeColor = false
         songImg.setOnLongClickListener {
@@ -146,27 +153,44 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
-    private  fun onChangeButtonClick(){
-        if (uEnteredName.text.toString().equals("")){
-            Toast.makeText(this, "Not allowed to edit empty username", Toast.LENGTH_SHORT).show()
-        } else {
-            editUName = !editUName
-            //if user is editing the username
-            if (editUName) {
-                uEnteredName.visibility = View.GONE
-                uEditName.visibility = View.VISIBLE
-                //uEditName.editableText.set = uEnteredName.text
-                uEditName.setText(uEnteredName.text, TextView.BufferType.EDITABLE)
-                uChangeBtn.text = getString(R.string.apply_user)
-                // are there ways to modify string xml instead? continue editing.
-            } else {
-                uEnteredName.text = uEditName.text
-                uEnteredName.visibility = View.VISIBLE
-                uEditName.visibility = View.GONE
-                uChangeBtn.text = getString(R.string.change_user)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_items,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_setting_icon ->
+                if (songPassed != null) {
+                lunchSettingActivity(this@PlayerActivity,songPassed,randomNumber)
             }
         }
+        return super.onOptionsItemSelected(item)
     }
+
+
+//    private  fun onChangeButtonClick(){
+//        if (uEnteredName.text.toString().equals("")){
+//            Toast.makeText(this, "Not allowed to edit empty username", Toast.LENGTH_SHORT).show()
+//        } else {
+//            editUName = !editUName
+//            //if user is editing the username
+//            if (editUName) {
+//                uEnteredName.visibility = View.GONE
+//                uEditName.visibility = View.VISIBLE
+//                //uEditName.editableText.set = uEnteredName.text
+//                uEditName.setText(uEnteredName.text, TextView.BufferType.EDITABLE)
+//                uChangeBtn.text = getString(R.string.apply_user)
+//                // are there ways to modify string xml instead? continue editing.
+//            } else {
+//                uEnteredName.text = uEditName.text
+//                uEnteredName.visibility = View.VISIBLE
+//                uEditName.visibility = View.GONE
+//                uChangeBtn.text = getString(R.string.change_user)
+//            }
+//        }
+//    }
+
 
 
     //length is the duration of message

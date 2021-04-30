@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.ericchee.songdataprovider.Song
 import edu.uw.yuanrz.dotify.databinding.ActivitySettingsBinding
 
@@ -35,8 +36,11 @@ class SettingsActivity : AppCompatActivity() {
 //                Toast.makeText(this@SettingsActivity, playCount.toString(), Toast.LENGTH_SHORT).show()
             //route the bundle from setting acitivity to my start destination fragment
             navController.setGraph(R.navigation.nav_graph,intent.extras)
+            setupActionBarWithNavController(navController)
         }
     }
+
+    override fun onNavigateUp() = navController.navigateUp()
 
 }
 

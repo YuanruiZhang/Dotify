@@ -1,78 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--16 dp paddings from all side, constraintLayout-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayerActivity"
-    android:padding="16dp">
+    android:padding="5dp">
 
     <!--  Top left text. centered relative to top right's height -->
-<!--    -->
-<!--    <TextView-->
-<!--        android:id="@+id/userName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/user_name"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textColor="@color/purple_theme"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/changeButton"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/changeButton" />-->
+    <!--    -->
+    <!--    <TextView-->
+    <!--        android:id="@+id/userName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/user_name"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textColor="@color/purple_theme"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/changeButton"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/changeButton" />-->
 
-<!--    &lt;!&ndash;edit text with no text suggestions(underscore)&ndash;&gt;-->
+    <!--    &lt;!&ndash;edit text with no text suggestions(underscore)&ndash;&gt;-->
 
-<!--    <EditText-->
-<!--        android:id="@+id/editUserName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:textSize="20sp"-->
-<!--        android:hint="User Name"-->
-<!--        android:inputType="text|textNoSuggestions"-->
-<!--        android:visibility="invisible"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintRight_toLeftOf="@+id/changeButton" />-->
+    <!--    <EditText-->
+    <!--        android:id="@+id/editUserName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:ems="10"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:hint="User Name"-->
+    <!--        android:inputType="text|textNoSuggestions"-->
+    <!--        android:visibility="invisible"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintRight_toLeftOf="@+id/changeButton" />-->
 
-<!--    &lt;!&ndash;Top right button &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/changeButton"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="45dp"-->
-<!--        android:ellipsize="none"-->
-<!--        android:text="@string/change_user"-->
-<!--        android:textSize="12sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    &lt;!&ndash;Top right button &ndash;&gt;-->
+    <!--    <Button-->
+    <!--        android:id="@+id/changeButton"-->
+    <!--        android:layout_width="130dp"-->
+    <!--        android:layout_height="45dp"-->
+    <!--        android:ellipsize="none"-->
+    <!--        android:text="@string/change_user"-->
+    <!--        android:textSize="12sp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--    <androidx.constraintlayout.widget.Barrier-->
-<!--        android:id="@+id/barrierTop"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:barrierDirection="bottom"-->
-<!--        app:constraint_referenced_ids="userName,changeButton"-->
-<!--        tools:layout_editor_absoluteX="16dp"-->
-<!--        tools:layout_editor_absoluteY="62dp" />-->
+    <!--    <androidx.constraintlayout.widget.Barrier-->
+    <!--        android:id="@+id/barrierTop"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:barrierDirection="bottom"-->
+    <!--        app:constraint_referenced_ids="userName,changeButton"-->
+    <!--        tools:layout_editor_absoluteX="16dp"-->
+    <!--        tools:layout_editor_absoluteY="62dp" />-->
 
-<!--  a cool setting icon, but put setting into top menu is cooler  -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:visibility="gone"
         app:srcCompat="@drawable/ic_baseline_settings_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrierTop"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="fabSetting" />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="album" />
 
     <!-- hard coded the song cover size instead of fully expand in case un-uniformed image    -->
     <ImageView
@@ -82,9 +79,8 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/strangers_cover_art"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barrierTop" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/songTitle"
@@ -94,8 +90,8 @@
         android:text="@string/song_title"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/album" />
+        app:layout_constraintStart_toStartOf="@id/barrierLeft"
+        app:layout_constraintTop_toBottomOf="@+id/fabSetting" />
 
     <!-- Only shows one line and add dots at the end. Center text with aligment.
     Note: 0dp == full span. wrap content == size of its content-->
@@ -107,10 +103,11 @@
         android:text="@string/song_dscr"
         android:textAlignment="center"
         android:textSize="15sp"
+        android:maxLength="50"
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrierLeft"
         app:layout_constraintTop_toBottomOf="@+id/songTitle" />
     <!-- a random number of plays with increment of 1 upon clicks  -->
     <TextView
@@ -120,15 +117,9 @@
         android:text= "@string/play_time"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrierLeft"
         app:layout_constraintTop_toBottomOf="@+id/albumDscr" />
-    <!--divide music and play buttons-->
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierBottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="playTime" />
+
     <!--change relative to play button； extract dim Y-->
     <!-- constraint layout chain-->
 
@@ -140,7 +131,7 @@
         android:layout_width= "@dimen/prevnextBtnSize"
         android:layout_height="@dimen/prevnextBtnSize"
         android:src="@drawable/ic_previous"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrierLeft"
         app:layout_constraintEnd_toStartOf="@id/playBtn"
         app:layout_constraintTop_toTopOf="@id/playBtn"
         app:layout_constraintBottom_toBottomOf="@id/playBtn" />
@@ -149,11 +140,11 @@
         android:id="@+id/playBtn"
         android:layout_width="@dimen/playBtnSize"
         android:layout_height="@dimen/playBtnSize"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_play"
         app:layout_constraintStart_toEndOf="@id/prevBtn"
         app:layout_constraintEnd_toStartOf="@id/nextBtn"
-        app:layout_constraintTop_toTopOf="@id/barrierBottom" />
+        app:layout_constraintTop_toBottomOf="@id/playTime" />
 
     <ImageView
         android:id="@+id/nextBtn"
@@ -164,8 +155,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/playBtn"
         app:layout_constraintBottom_toBottomOf="@id/playBtn" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
