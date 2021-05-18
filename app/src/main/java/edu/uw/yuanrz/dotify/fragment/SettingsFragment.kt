@@ -1,14 +1,14 @@
-package edu.uw.yuanrz.dotify
+package edu.uw.yuanrz.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import edu.uw.yuanrz.dotify.NavGraphDirections
+import edu.uw.yuanrz.dotify.fragment.SettingsFragmentArgs
 import edu.uw.yuanrz.dotify.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -33,7 +33,12 @@ class SettingsFragment : Fragment() {
         }
 
         binding.btnStats.setOnClickListener{
-            navController.navigate(NavGraphDirections.actionGlobalStatisticsFragment(passedSong,playCount))
+            navController.navigate(
+                NavGraphDirections.actionGlobalStatisticsFragment(
+                    passedSong,
+                    playCount
+                )
+            )
         }
 
         binding.btnAbout.setOnClickListener{

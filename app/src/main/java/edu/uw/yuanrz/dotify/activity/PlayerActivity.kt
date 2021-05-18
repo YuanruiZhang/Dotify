@@ -1,4 +1,4 @@
-package edu.uw.yuanrz.dotify
+package edu.uw.yuanrz.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,8 +10,11 @@ import android.view.View
 import android.widget.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.ericchee.songdataprovider.Song
+import coil.load
+//import com.ericchee.songdataprovider.Song
+import edu.uw.yuanrz.dotify.model.Song
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edu.uw.yuanrz.dotify.R
 import kotlin.random.Random
 
 private const val SONG_IMG_ID = "song_image_ID"
@@ -25,7 +28,7 @@ fun navigateToSongPlayerActivity(context: Context, singleSong: Song) = with(cont
     // take the song object send it to
     val intent = Intent(this, PlayerActivity::class.java).apply { // declare to launch PlayerActivity
         val bundle = Bundle().apply {
-            putInt(SONG_IMG_ID, singleSong.largeImageID)
+            putString(SONG_IMG_ID, singleSong.largeImageURL)
             putString(SONG_TITLE, singleSong.title)
             putString(SONG_ARTIST,singleSong.artist)
 
@@ -93,7 +96,7 @@ class PlayerActivity : AppCompatActivity() {
         nextBtn = findViewById(R.id.nextBtn)
         fabSettingBtn = findViewById(R.id.fabSetting)
 
-        val songImgPassed: Int? = intent.extras?.getInt(SONG_IMG_ID)
+        val songImgPassed: String? = intent.extras?.getString(SONG_IMG_ID)
         val songTitlePassed: String? = intent.extras?.getString(SONG_TITLE)
         //example of how to extract from parcelable extra
         val maybeSong: Song? = intent.getParcelableExtra(SONG_OBJ)
@@ -104,7 +107,7 @@ class PlayerActivity : AppCompatActivity() {
         val songArtistPassed: String? = intent.extras?.getString(SONG_ARTIST)
 
         if (songImgPassed != null && songTitlePassed != null && songArtistPassed != null && songPassed != null) {
-            songImg.setImageResource(songImgPassed)
+            songImg.load(songImgPassed)
             songTitle.text = songTitlePassed.toString()
             songArtist.text = songPassed.artist
         }

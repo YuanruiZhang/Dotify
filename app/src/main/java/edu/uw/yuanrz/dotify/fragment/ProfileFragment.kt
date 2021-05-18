@@ -1,4 +1,4 @@
-package edu.uw.yuanrz.dotify
+package edu.uw.yuanrz.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

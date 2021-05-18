@@ -1,4 +1,4 @@
-package edu.uw.yuanrz.dotify
+package edu.uw.yuanrz.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.ericchee.songdataprovider.Song
+//import com.ericchee.songdataprovider.Song
+import edu.uw.yuanrz.dotify.model.Song
+
+import edu.uw.yuanrz.dotify.R
 import edu.uw.yuanrz.dotify.databinding.ActivitySettingsBinding
 
 private const val SONG_OBJ = "song_object"

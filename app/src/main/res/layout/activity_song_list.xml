@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongListActivity">
+    tools:context=".activity.SongListActivity">
 
     <!-- a recycle view basics based on item_song-->
     <androidx.recyclerview.widget.RecyclerView

@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ericchee.songdataprovider.Song
+import coil.load
+//import com.ericchee.songdataprovider.Song
+import edu.uw.yuanrz.dotify.model.Song
+
 import edu.uw.yuanrz.dotify.databinding.ItemSongBinding
 
 class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
@@ -21,7 +24,9 @@ class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val singleSong = listOfSongs[position]
         with(holder.binding) {
-            ivSongPic.setImageResource(singleSong.smallImageID)
+            //commented out the old way on loading local images. Using coil to fetch online pics
+            //ivSongPic.setImageResource(singleSong.smallImageID)
+            ivSongPic.load(singleSong.smallImageURL)
             tvSongTitle.text = singleSong.title
             tvSongArtist.text = singleSong.artist
 
