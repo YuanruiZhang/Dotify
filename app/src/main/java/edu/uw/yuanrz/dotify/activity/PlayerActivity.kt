@@ -14,6 +14,7 @@ import coil.load
 //import com.ericchee.songdataprovider.Song
 import edu.uw.yuanrz.dotify.model.Song
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edu.uw.yuanrz.dotify.DotifyApplication
 import edu.uw.yuanrz.dotify.R
 import kotlin.random.Random
 
@@ -54,6 +55,10 @@ class PlayerActivity : AppCompatActivity() {
         }
         super.onSaveInstanceState(outState)
     }
+
+    private val DotifyApp: DotifyApplication by lazy {application as DotifyApplication }
+    private val dataRepository by lazy { DotifyApp.dataRepository }
+    private val dotifyManager by lazy {DotifyApp.dotifyManager }
 
     private var randomNumber = Random.nextInt(1000, 10000)
 //    private lateinit var uEnteredName: TextView
@@ -138,6 +143,10 @@ class PlayerActivity : AppCompatActivity() {
         playBtn.setOnClickListener {
             randomNumber += 1
             playTime.text = randomNumber.toString()
+            dotifyManager.Pause()
+            if (dotifyManager.getIfPause()) {
+                Toast.makeText(this, "You Paused", Toast.LENGTH_SHORT).show()
+            }
         }
 
         prevBtn.setOnClickListener {

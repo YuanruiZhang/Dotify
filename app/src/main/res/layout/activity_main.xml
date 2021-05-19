@@ -151,8 +151,8 @@
         android:layout_height="@dimen/playBtnSize"
         android:layout_marginTop="40dp"
         android:src="@drawable/ic_play"
-        app:layout_constraintStart_toEndOf="@id/prevBtn"
         app:layout_constraintEnd_toStartOf="@id/nextBtn"
+        app:layout_constraintStart_toEndOf="@id/prevBtn"
         app:layout_constraintTop_toTopOf="@id/barrierBottom" />
 
     <ImageView
