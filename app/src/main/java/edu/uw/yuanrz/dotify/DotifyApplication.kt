@@ -15,8 +15,6 @@ class DotifyApplication:Application() {
     lateinit var refreshSongManager: RefreshSongManager
     lateinit var notificationManager: SongNotificationManager
     lateinit var preferences: SharedPreferences
-
-
     val  dotifyManager: DotifyManager by lazy { DotifyManager() }
 
 
