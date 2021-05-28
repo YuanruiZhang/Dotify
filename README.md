@@ -11,6 +11,7 @@ respectively (+ .5)
 
 HW1 progress: see screenshot in branch hw1
 
+----------------------------------------------------------------------------------------------------------------------------
 
 HW5: added notification feature to settings that once enabled, will push random new songs fetched from API in every 20 minutes
 
