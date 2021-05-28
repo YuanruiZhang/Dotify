@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import coil.load
 import edu.uw.yuanrz.dotify.DotifyApplication
 import edu.uw.yuanrz.dotify.fragment.SettingsFragmentArgs
 import edu.uw.yuanrz.dotify.databinding.FragmentStatisticsBinding
@@ -26,7 +27,9 @@ class StatisticsFragment : Fragment() {
         val statsPlayCountTxt = "Play Count: $playCount"
 
         with(binding){
-            statsAlbum.setImageResource(passedSong.smallImageID)
+            //commented out the old library, use retrofit to load image url instead
+            //statsAlbum.setImageResource(passedSong.smallImageURL)
+            statsAlbum.load(passedSong.smallImageURL)
             statsPlayCount.text = statsPlayCountTxt
         }
 

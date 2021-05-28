@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_statistics">
         <argument
             android:name="song_object"
-            app:argType="com.ericchee.songdataprovider.Song" />
+            app:argType="edu.uw.yuanrz.dotify.model.Song" />
         <argument
             android:name="play_count"
             app:argType="integer" />
@@ -34,7 +34,7 @@
         tools:layout="@layout/fragment_settings">
         <argument
             android:name="song_object"
-            app:argType="com.ericchee.songdataprovider.Song" />
+            app:argType="edu.uw.yuanrz.dotify.model.Song" />
         <argument
             android:name="play_count"
             app:argType="integer" />

@@ -11,4 +11,6 @@
     <string name="setting_profile">Profile Fragment</string>
     <string name="user_email">wussup@deamon.com</string>
     <string name="user_dscr">I first cut the deamon, I then cut you. Nah jk</string>
+    <string name="new_songs">new songs</string>
+    <string name="new_songs_channel_description">new songs channel description</string>
 </resources>
