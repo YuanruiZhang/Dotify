@@ -47,6 +47,27 @@ class RefreshSongManager(context: Context) {
 
     }
 
+    //Another work manager that refresh song every 2 days
+    fun startRefreshSongsPeriodically2() {
+        if (isSongSyncRunning()) {
+            return
+        }
+
+        val request = PeriodicWorkRequestBuilder<SongSyncWorker>(2, TimeUnit.DAYS)
+                //make sure using the constraint class instead of constraints layout
+                .setConstraints(
+                        Constraints.Builder()
+                                .setRequiresBatteryNotLow(true)
+                                .setRequiredNetworkType(NetworkType.CONNECTED) //only run when network in connected
+                                .build()
+                )
+                .addTag(SONG_SYNC_WORK_TAG)
+                .build()
+
+        workManager.enqueue(request)
+
+    }
+
     // stop pushing notifications
     fun stopPeriodicallyRefreshing() {
         workManager.cancelAllWorkByTag(SONG_SYNC_WORK_TAG)

@@ -69,7 +69,7 @@ class SongNotificationManager(
 
     private fun initNotificationChannels() {
         initNewSongsChannel()
-//        initPromotionChannel()
+        //initPromotionChannel() If there's another channel, go here
     }
 
     private fun initNewSongsChannel() {
@@ -91,7 +91,9 @@ class SongNotificationManager(
         }
     }
 
-    private fun initPromotionChannel() {}
+//    private fun initPromotionChannel() {
+//
+//    }
 
 }
 
