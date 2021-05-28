@@ -13,7 +13,8 @@ HW1 progress: see screenshot in branch hw1
 
 
 HW5: added notification feature to settings that once enabled, will push random new songs fetched from API in every 20 minutes
-Note:
+
+Contents:
 - activity folder: each file directly handle user's interaction on its associated activity screen
 - fragment folder: where each mini entities live that has their own UI and lifecycle. Being linked through nav_graph
 - manager folder: each specified in their own tasks and kinda like APIs and live in application level 
